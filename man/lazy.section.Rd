@@ -29,7 +29,9 @@ lazy.write(
   lazy.section("Subsection", type="sub", ordered=FALSE),
   lazy.text("But the subsection is not numbered"),
   lazy.file.end(),
-  OutFile="Example 1.tex")
+  OutFile="Example-1.tex")
+  
+unlink("Example-1.tex")
 }
 
 \keyword{ methods }

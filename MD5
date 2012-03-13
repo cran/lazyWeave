@@ -1,4 +1,5 @@
-7bda31b8f2238d977e9b5aedbf273a1c *DESCRIPTION
+48dfde642a57451b27fb91aafa064e13 *DESCRIPTION
+b96c34730ac74dd464ab0dc99dbee22e *NAMESPACE
 7e062ea67df6cee835c67ee11348f378 *R/lazy.build.R
 47f4c1ccfe3cd1e761115a87f6045cd1 *R/lazy.citation.R
 3caf6814fab74a9baa93dde3fb81961e *R/lazy.counter.R
@@ -9,7 +10,7 @@ b5e11ce610145c542d264d811c9c70d7 *R/lazy.footnote.R
 c5868e9cbfa6b2cea1e1045053b32eb7 *R/lazy.label.R
 8ab2ce89aedcb61c213bfa8226c9af9f *R/lazy.landscape.R
 466e61bebca467b3406647f9c59b8a98 *R/lazy.list.R
-e5c381b2feec99e6e8e709ea50519683 *R/lazy.matrix.R
+1f4946cafa2c0ad5055cf75452696f51 *R/lazy.matrix.R
 36ae781d85395f788704467012bff864 *R/lazy.page.break.R
 7a250fedf7076a7f4bce3bf46608d1bb *R/lazy.page.number.R
 ffa63a993226200ea8f71c32c0457911 *R/lazy.ref.R
@@ -18,13 +19,13 @@ ffa63a993226200ea8f71c32c0457911 *R/lazy.ref.R
 e9e5ebd790100b357e367f53e4c07a66 *R/lazy.text.R
 5f2b53af053b8d396a581626ebffd00b *R/lazy.text.format.R
 2baa513a8667df3e86edd6617839b146 *R/lazy.toc.R
-55bd251aa60fdc993567ed4d552e815f *R/lazy.write.R
+024390bbff5d511a6cd647079d395f6b *R/lazy.write.R
 ceab98e16ab21567bf4bad9d5e33dc17 *data/Scout.RData
 68686149898da828628bf9626c77a2fb *man/Scout.rd
-93db538c1c74109613da0f8167cd8984 *man/lazy.build.Rd
+4d5026244982adf1ad99df67db452085 *man/lazy.build.Rd
 a968a5627e52d4a9037801fdba44a34a *man/lazy.citation.Rd
 53d79792c8125fc62f6c5445d6e6ca17 *man/lazy.counter.Rd
-298cac7e11c5355d42202d48b7ee45e5 *man/lazy.figure.Rd
+ae71d05f751a327c18d974cf08734b6d *man/lazy.figure.Rd
 a50a1ffab7e20c69db0df141d9dc60f2 *man/lazy.file.end.Rd
 b7b00744e87204bef63d3d0069cbb8d8 *man/lazy.file.start.Rd
 368467f73704e4bac97b1ea308864763 *man/lazy.footnote.Rd
@@ -34,10 +35,10 @@ dbce499b8d59b202640b3d55a9c2bd94 *man/lazy.landscape.Rd
 8b25ce7bf9eb82e74263417b593b85f7 *man/lazy.page.break.Rd
 9675877f087b04622dd90ae4057cb664 *man/lazy.page.number.Rd
 92f7b0101470b1e0bc167f5f5e9d4b5b *man/lazy.ref.Rd
-ae5808ee0cbb5191d4b3abb78fd411dd *man/lazy.section.Rd
-784bf16d3fad61e99bfc0c911d10ae20 *man/lazy.table.Rd
+42956a47c989e190aa907c704c42fadc *man/lazy.section.Rd
+b80fba8742c186617118db7cd663eb6a *man/lazy.table.Rd
 94cdf2cf90358d1d4da4b8ce02be8c71 *man/lazy.text.Rd
 42b17ae94d78f9553c597c82f3c7ac9a *man/lazy.text.format.Rd
 e01efc7c8184c040912f6e1008195607 *man/lazy.toc.Rd
-765c00ea2b31807de05f59a19adfd2be *man/lazy.write.Rd
-d98b50a842063b32c5e2430b3fd05a7a *man/lazyWeave-package.Rd
+04429ddea0780c4f76199a0ef912adbc *man/lazy.write.Rd
+619547224dcac609a7370956da83482d *man/lazyWeave-package.Rd

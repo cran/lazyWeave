@@ -1,5 +1,5 @@
 lazy.write <-
-function(..., OutFile, append=FALSE){
+function(..., OutFile, append=FALSE, collapse="\n"){
 
 #*** Stop Function if no OutFile is given
   if (missing(OutFile))
@@ -30,7 +30,7 @@ function(..., OutFile, append=FALSE){
 #*** Combine all the code into one string for exporting to the file.
   code <- list(...)
   code <- lapply(code, f)
-  code <- paste(code, collapse = "\n")
+  code <- paste(code, collapse = collapse)
   write(code, OutFile, append = append)
 }
 
