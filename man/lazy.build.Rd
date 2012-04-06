@@ -42,14 +42,18 @@ lazy.build(tex, pdf=NULL, quiet=TRUE, clean=TRUE,
   
   When there is a problem with the LaTeX code, the document will not build properly.  When this happens, several lines may appear in the
   R Console that give a nearly unintelligible explanation for the error.  I highly recommend first checking that you've included 
-  \code{lazy.file.end()} at the end of your document.  This is easily my most frequent error.
+  \code{lazy.file.close()} at the end of your document.  This is easily my most frequent error.
   
-  Otherwise, reviewing the output from a failed build may help pinpoint the error.  For example, the following message indicates
-  an error on line 67 and is often accompanied by some description of the error.  Identifying the line number where
-  the problem occurs can sometimes help identify the solution.  It may also be helpful to set \code{quiet=FALSE}.
+  In cases where the R Console prints something like what is given below (sometimes the output will be very, very long).  
+  The primary piece of information here is that there was an error on lines 72 and 73.  By opening the .tex file, you can determine 
+  what \code{lazyWeave} function generated the problematic code.  Look at the top of the block for those lines and the function call is
+  given as a comment in the LaTeX code.
   
-  \code{LaTeX errors:}\cr
-  \code{file.tex:67: LaTeX Error: [Error Description].}
+  \code{SampleFile.tex:72: [perhaps some text, perhaps not]}\cr
+  \code{SampleFile.tex:73: }  
+  
+  One common problem with \code{lazy.table} is using a \code{cwidth} argument that has a length not equal to the number of columns in 
+  the table.
 
 }
 

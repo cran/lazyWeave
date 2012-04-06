@@ -57,9 +57,11 @@ lazy.write(
       caption="Distribution of Miles per Gallon in mtcars dataset",
       height=5, width=5, label="MPGgraph"),
   lazy.file.end(),
-  OutFile="Example 1.tex")
+  OutFile="Example-1.tex")
   
-unlink("Example 1.tex")
+unlink("MPG.pdf")
+unlink("Example-1.tex")
+unlink("Example-1.pdf")
 }
 
 \keyword{ methods }

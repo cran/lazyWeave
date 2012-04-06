@@ -27,7 +27,8 @@ lazy.table(x, align = "center", justify="center", placement="!H",
     calls to \code{latex.table} to build tables with complex headers.}
   \item{cborder}{A vector denoting vertical border positions.  Borders are
     placed to the right of the given columns.  See "Details".}
-  \item{cwidth}{Specifies the width of each column in inches.}
+  \item{cwidth}{Currently not in use.  Will be used to specify the width
+    of each column.}
   \item{rborder}{A vector denoting horizontal border positions.  Borders 
     are placed at the bottom of the given rows.  See "Details".}
   \item{rbspan}{A vector or list giving the start and stop positions of the
@@ -64,7 +65,7 @@ lazy.table(x, align = "center", justify="center", placement="!H",
   placed under the specified rows.  Use 0 if a line is needed at the top of 
   a table.
   
-  Multiple calls to \code{lazy.table} may be used to make complex tables.
+  Multiple calls to \code{latex.table} may be used to make complex tables.
   For instance, a header may be desired with group names that span over 
   three summary values (See example 2).  In these instances, \emph{it is the
   responsibility of the user to make sure the number of columns in each 

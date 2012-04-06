@@ -35,7 +35,7 @@ function(x, align="center", justify="center", rcol=NULL, usecol="lightgray",
                           caption=caption, placement=placement,
                           translate=translate, ...)
     body <- lazy.table(x, align=align, cspan=1,
-                        rbord=nrow(x), rcol=rcol,
+                        rborder=nrow(x), rcol=rcol,
                         justify=justify, usecol=usecol, 
                         open=FALSE, close=TRUE, 
                         footnote=footnote,

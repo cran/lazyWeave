@@ -8,15 +8,6 @@
   for building tables, etc.  
 }
 \details{
-\tabular{ll}{
-Package: \tab lazyWeave\cr
-Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2010-08-17\cr
-License: \tab What license is it under?\cr
-LazyLoad: \tab yes\cr
-}
-
 Depending on the working directory (for Windows users), the user may encounter the error 
 "texi2dvi.exe: Windows API error 5: Access is denied." when trying
 to build documents.  This happens when the working directory is write protected.  It is advisable to change the working directory to 
@@ -48,6 +39,7 @@ to satisfy your needs, then I strongly suggest you look into using
 \author{Benjamin Nutter <nutterb@ccf.org>}
 
 \examples{
+require(survival)
 data(Scout)
 
 #*** Did the scout earn first class in the first year
@@ -209,6 +201,11 @@ lazy.write(
   OutFile="Scout.tex")
   
 lazy.build("Scout.tex")
+
+unlink("TimeToEagle.pdf")
+unlink("TimeToEagleByFirst.pdf")
+unlink("Scout.tex")
+unlink("Scout.pdf")
 }
 
 \keyword{ package }
