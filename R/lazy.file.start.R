@@ -1,7 +1,7 @@
 lazy.file.start <-
 function(docClass="article", packages=NULL, 
     counters=NULL, layout="", page="arabic", ligatures=TRUE,
-    title=NULL, author=NULL){
+    title=NULL, author=NULL, date=""){
     
   fncall <- paste("%%", paste(deparse(match.call()), collapse=" "))
 #*** Automatically uses packages graphicx (for importing graphics) 
@@ -19,6 +19,7 @@ function(docClass="article", packages=NULL,
   if (!is.null(title) | !is.null(author))
     title <- paste("\\title{", title, "}\n",
                    "\\author{", author, "}\n",
+                   "\\date{", date, "}\n", 
                    "\\maketitle", sep="")
   else title <- ""
 

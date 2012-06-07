@@ -1,12 +1,13 @@
-48dfde642a57451b27fb91aafa064e13 *DESCRIPTION
-b96c34730ac74dd464ab0dc99dbee22e *NAMESPACE
+68e6a00609cb44a4d2ba1edaa7004e68 *DESCRIPTION
+a50e2e83561607f43797c46086fc5d70 *NAMESPACE
 7e062ea67df6cee835c67ee11348f378 *R/lazy.build.R
 47f4c1ccfe3cd1e761115a87f6045cd1 *R/lazy.citation.R
 3caf6814fab74a9baa93dde3fb81961e *R/lazy.counter.R
 a63b7e8bb585d871b43a81497d34b611 *R/lazy.figure.R
 2fa43b3e290853b9b65acb06f3f88c4f *R/lazy.file.end.R
-8d22fb3ddc9c043dc78529d8aa29d629 *R/lazy.file.start.R
+5c78bb0a82980997352b79134cb31918 *R/lazy.file.start.R
 b5e11ce610145c542d264d811c9c70d7 *R/lazy.footnote.R
+57908b1f0e5c71129eda62c318dcd204 *R/lazy.insert.code.R
 c5868e9cbfa6b2cea1e1045053b32eb7 *R/lazy.label.R
 8ab2ce89aedcb61c213bfa8226c9af9f *R/lazy.landscape.R
 466e61bebca467b3406647f9c59b8a98 *R/lazy.list.R
@@ -19,6 +20,8 @@ ffa63a993226200ea8f71c32c0457911 *R/lazy.ref.R
 e9e5ebd790100b357e367f53e4c07a66 *R/lazy.text.R
 5f2b53af053b8d396a581626ebffd00b *R/lazy.text.format.R
 2baa513a8667df3e86edd6617839b146 *R/lazy.toc.R
+f7695c178a47517479a253bdd441c2c9 *R/lazy.verbatim.end.R
+8f8ed4f4d43cf1046a96f3e86c6c7d70 *R/lazy.verbatim.start.R
 024390bbff5d511a6cd647079d395f6b *R/lazy.write.R
 ceab98e16ab21567bf4bad9d5e33dc17 *data/Scout.RData
 68686149898da828628bf9626c77a2fb *man/Scout.rd
@@ -27,8 +30,9 @@ a968a5627e52d4a9037801fdba44a34a *man/lazy.citation.Rd
 53d79792c8125fc62f6c5445d6e6ca17 *man/lazy.counter.Rd
 ae71d05f751a327c18d974cf08734b6d *man/lazy.figure.Rd
 a50a1ffab7e20c69db0df141d9dc60f2 *man/lazy.file.end.Rd
-b7b00744e87204bef63d3d0069cbb8d8 *man/lazy.file.start.Rd
+8ee3beef2c9df12e5210318ff69a222f *man/lazy.file.start.Rd
 368467f73704e4bac97b1ea308864763 *man/lazy.footnote.Rd
+cf0612c9e4067bdad23dd99701f18e71 *man/lazy.insert.code.Rd
 dbce499b8d59b202640b3d55a9c2bd94 *man/lazy.landscape.Rd
 73f13452d8bda184fd16e3ea7e81240c *man/lazy.list.Rd
 2e282d9399bf494109c852a6ef7aa0ac *man/lazy.matrix.Rd
@@ -40,5 +44,6 @@ b80fba8742c186617118db7cd663eb6a *man/lazy.table.Rd
 94cdf2cf90358d1d4da4b8ce02be8c71 *man/lazy.text.Rd
 42b17ae94d78f9553c597c82f3c7ac9a *man/lazy.text.format.Rd
 e01efc7c8184c040912f6e1008195607 *man/lazy.toc.Rd
+93764fd9e5fd7bfe0d741a5b3db649e0 *man/lazy.verbatim.Rd
 04429ddea0780c4f76199a0ef912adbc *man/lazy.write.Rd
 619547224dcac609a7370956da83482d *man/lazyWeave-package.Rd
