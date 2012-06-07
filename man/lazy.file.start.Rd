@@ -6,7 +6,7 @@
 \usage{
 lazy.file.start(docClass = "article", packages = NULL, 
   counters = NULL, layout="", page = "arabic", 
-  ligatures = TRUE, title = NULL, author = NULL)
+  ligatures = TRUE, title = NULL, author = NULL, date="")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,6 +20,7 @@ lazy.file.start(docClass = "article", packages = NULL,
   \item{ligatures}{Determines if ligatures are enabled.  See the references for a link about ligatures.}
   \item{title}{A title for the document.}
   \item{author}{Author of the document.}
+  \item{date}{Date to be printed on the title page}
 }
 
 \details{Titles are only made when either \code{title} or \code{author} are 
