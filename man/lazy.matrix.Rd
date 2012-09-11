@@ -3,10 +3,8 @@
 \title{Convert Matrix to LaTeX Table}
 \description{An example of using \code{lazyWeave} to produce tables.}
 \usage{
-lazy.matrix(x, align = "center", justify="center", 
-    rcol = NULL, usecol = "lightgray", 
-    caption = NULL, footnote = NULL,
-    placement = "!H", translate=TRUE, ...)
+lazy.matrix(x, align="center", justify="center", rcol=NULL, usecol="lightgray",
+            caption=NULL, footnote=NULL, placement="h", translate=TRUE, ...)
 }
 
 \arguments{
@@ -23,7 +21,7 @@ lazy.matrix(x, align = "center", justify="center",
     below the table.}
   \item{placement}{Controls the placement of the figure.  Options are
     \code{"ht", "t", "b", "p", "H"} and can be supplemented with 
-    \code{"!"}. See "Details" for more explanation.}
+    \code{"!"}. See "Details" for more explanation. These apply only to LaTeX.}
   \item{translate}{Toggles if inputs in \code{x} should be passed through 
     \code{latexTranslate}.  This should be set to \code{FALSE} if writing
     custom code.}
@@ -54,6 +52,7 @@ lazy.matrix(x, align = "center", justify="center",
 \author{Benjamin Nutter \email{nutterb@ccf.org}}
 
 \examples{
+\dontrun{
 lazy.write(
   lazy.file.start(),
   lazy.text("The mtcars dataset describes a number of vehicles.  
@@ -63,6 +62,7 @@ lazy.write(
   OutFile="Example 1.tex")
   
 unlink("Example 1.tex")
+}
 }
 
 \keyword{ methods }

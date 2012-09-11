@@ -1,15 +1,23 @@
 lazy.matrix <-
 function(x, align="center", justify="center", rcol=NULL, usecol="lightgray",
-    caption=NULL, footnote=NULL, placement="!H", translate=TRUE, ...){
+    caption=NULL, footnote=NULL, placement="h", translate=TRUE, ...){
     
      
-  fncall <- paste("%%", paste(deparse(match.call()), collapse=""), "\n")
+  #*** retrieve the report format
+  reportFormat <- getOption("lazyReportFormat")
+  if (!reportFormat %in% c("latex", "html")) stop("option(\"lazyReportFormat\") must be either 'latex' or 'html'")
+  
+  #*** Construct the comment with the function call
+  comment.char <- if (reportFormat == "latex") c("%%", "")
+  else if (reportFormat == "html") c("<!--", "-->")
+  
+  fncall <- paste(comment.char[1], paste(deparse(match.call()), collapse=" "), comment.char[2], "\n")
 
 #*** Coerce x to a matrix
   if (!is.matrix(x)) x <- as.matrix(x)
   
   if ("cwidth" %in% names(list(...))){
-    cw <- list(...)$cw
+    cw <- list(...)$cwidth
     if (!is.null(rownames(x))){
       if (length(cw) != 1 && ((ncol(x) + 1) != length(cw)))
         stop("'cwidth' must have length 1 or equal to ncol(x)--remember your row names")
@@ -26,6 +34,7 @@ function(x, align="center", justify="center", rcol=NULL, usecol="lightgray",
     rownames(x) <- NULL
     align = c("left", align)
   }
+ 
 
 #*** Table if colnames are present
   if (!is.null(colnames(x))){
@@ -41,15 +50,16 @@ function(x, align="center", justify="center", rcol=NULL, usecol="lightgray",
                         footnote=footnote,
                         translate=translate, ...)
   }
-
+  
 #*** Table if colnames are not present
   else{
     header <- ""
     body <- lazy.table(x, align=align, cspan=1,
-                        justify=justify, rborder=c(0, 0, nrow(x)),
+                        justify=justify, rborder=c(0, nrow(x)),
                         open=TRUE, close=TRUE, 
                         rcol=rcol, usecol=usecol,
                         caption=caption, footnote=footnote,
+                        placement=placement,
                         translate=translate, ...)
   }
   
