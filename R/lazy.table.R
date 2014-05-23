@@ -31,9 +31,9 @@ lazy.table <- function(x,
       stop("'cwidth' must have length 1 or equal to ncol(x)")
   }
 
-  if (missing(font)) font <- get(".HTML.FONT.FONT.", envir=.GlobalEnv)
-  if (missing(family)) family <- get(".HTML.FONT.FAMILY.", envir=.GlobalEnv)
-  if (missing(size)) size <- get(".HTML.FONT.SIZE.", envir=.GlobalEnv)
+  if (missing(font)) font <- get("HTML.FONT.FONT", envir=options()$htmlCounters)
+  if (missing(family)) family <- get("HTML.FONT.FAMILY", envir=options()$htmlCounters)
+  if (missing(size)) size <- get("HTML.FONT.SIZE", envir=options()$htmlCounters)
   
   if (!is.null(textsize)){
     size <- textsize
@@ -133,6 +133,7 @@ lazy.table <- function(x,
     bbot <- matrix("none", nrow=nrow(x), ncol=ncol(x))
     bord.thick.bot <- matrix("", nrow=nrow(x), ncol=ncol(x))
     if (!is.null(rborder))
+#       return(list(x, bord.thick.bot, rborder, rbspan))
       bord.thick.bot[rborder, rbspan] <- rborder.thick[if (length(rborder) > 0) which(rborder != 0) else 1]
 
     if (!is.null(rborder)){
@@ -254,7 +255,7 @@ lazy.table <- function(x,
   #******************************************************************************************************
   
   if (reportFormat == "html"){
-    code <- paste("    <td colspan=", cspan, "; ", 
+    code <- paste("    <td colspan=", cspan, "  ", 
                   "style='font-family", font, ", ", family, "; ",
                   "font-size:", size, "pt;", 
                   "width:", cwidth, "; ",
