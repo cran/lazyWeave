@@ -1,3 +1,7 @@
+#' @rdname ComparisonTable
+#' @export conttable
+#' 
+
 'conttable' <- function(data, vars, byVar,
                  normal = NULL, var.equal = NULL, 
                  median = NULL,  
@@ -32,6 +36,8 @@
     miss.vars.msg <- paste("The following variables contain only missing values:", paste(miss.vars, collapse=", "))
     stop(miss.vars.msg)
   }
+  
+  if ("tbl_df" %in% class(data)) data <- as.data.frame(data)
 
 #******************************************************************************
 #* Subroutine for information extraction
@@ -48,13 +54,13 @@
 #*** 1. Variable name, label, and level.  
     nlev <- nlevels(data[, byVar])
     m.boot <- do.call("rbind",tapply(data[, v], data[, byVar],
-                                     smean.cl.boot, B=B))
-    quant <- do.call("rbind", tapply(data[, v], data[, byVar], quantile,
+                                     Hmisc::smean.cl.boot, B=B))
+    quant <- do.call("rbind", tapply(data[, v], data[, byVar], stats::quantile,
                      probs=seq(0, 1, by=.25), na.rm=TRUE))
                      
 #*** 2. Numeric Summary variables
     .name <- v
-    .label <- if (label(data[,v]) %in% "") v else label(data[, v])
+    .label <- if (Hmisc::label(data[,v]) %in% "") v else Hmisc::label(data[, v])
     .level <- NA
     .count <- colSums(table(data[, v], data[, byVar]))
     .prop <- rep(NA, nlev); names(.prop) <- levels(data[, byVar])
@@ -65,7 +71,7 @@
     .lowerb <- m.boot[, 2]
     .upperb <- m.boot[, 3]
     .mean <- tapply(data[, v], data[, byVar], mean, na.rm=TRUE)
-    .sd <- tapply(data[, v], data[, byVar], sd, na.rm=TRUE)
+    .sd <- tapply(data[, v], data[, byVar], stats::sd, na.rm=TRUE)
     .min <- quant[, 1]
     .p25 <- quant[, 2]
     .median <- quant[, 3]
@@ -77,9 +83,9 @@
       if (nlev == 2){
         .odds.scale <- if (v %in% names(odds.scale)) odds.scale[[v]] else 1
         .odds.unit <- if (v %in% names(odds.unit))  odds.unit[[v]] else "units"
-        m <- glm(data[, byVar] ~ data[, v], family=binomial)
-        ci <- confint(m, level=1 - alpha)
-        .odds <- exp(coef(m)[2] * .odds.scale)
+        m <- stats::glm(data[, byVar] ~ data[, v], family=stats::binomial)
+        ci <- stats::confint(m, level=1 - alpha)
+        .odds <- exp(stats::coef(m)[2] * .odds.scale)
         .odds.lower <- exp(ci[2,1] * .odds.scale)
         .odds.upper <- exp(ci[2,2] * .odds.scale)
       }
@@ -110,12 +116,12 @@
     else if (nlev == 2){
       if (v %in% normal){
         v.eq <- v %in% var.equal
-        test.obj <- t.test(data[, v] ~ data[, byVar], var.equal=v.eq,
+        test.obj <- stats::t.test(data[, v] ~ data[, byVar], var.equal=v.eq,
                            conf.level=1 - alpha)
         .test.mark <- "T"
       }
       else{
-        warn <- withWarnings(wilcox.test(data[, v] ~ data[, byVar]))
+        warn <- withWarnings(stats::wilcox.test(data[, v] ~ data[, byVar]))
         if (!is.null(warn$warnings)) warning(v, ": ", warn$warnings)
         test.obj <- warn$value
         .test.mark <- "W"
@@ -123,14 +129,14 @@
     }
     else{
       if (v %in% normal){
-        test.obj <- aov(data[, v] ~ data[, byVar])
+        test.obj <- stats::aov(data[, v] ~ data[, byVar])
         test.obj$method <- "Analysis of Variance"
-        test.obj$statistic <- anova(test.obj)[1, 4]
-        test.obj$p.value <- anova(test.obj)[1, 5]
+        test.obj$statistic <- stats::anova(test.obj)[1, 4]
+        test.obj$p.value <- stats::anova(test.obj)[1, 5]
         .test.mark <- "A"
       }
       else{
-        test.obj <- kruskal.test(data[, v] ~ data[, byVar])
+        test.obj <- stats::kruskal.test(data[, v] ~ data[, byVar])
         .test.mark <- "K"
       }
     }
@@ -153,7 +159,7 @@
                  .odds, .odds.lower, .odds.upper, .odds.scale, .odds.unit,
                  test.obj$method, .test.mark, test.obj$statistic, 
                  test.obj$p.value,
-                 is.significant(test.obj$p.value), .type,
+                 is_significant(test.obj$p.value), .type,
                  stringsAsFactors=FALSE)
     names(.df) <- c("name", "label", "level", "total", names.df, "missing", "missing.perc",
                     "odds", "odds.lower", "odds.upper", "odds.scale",
@@ -178,9 +184,10 @@
   if (!is.factor(data[, byVar])) data[, byVar] <- factor(data[, byVar])
 #   if (!("ccf.df" %in% class(data))) data <- as.ccf.df.data.frame(data)
   ctable <- do.call("rbind", lapply(vars, var.info))
+  ctable$type <- factor(ctable$type)
   class(ctable) <- c("ctable", "data.frame")
   attributes(ctable)$byVar <- data[, byVar]
-  label(attributes(ctable)$byVar) <- label(data[, byVar])
+  Hmisc::label(attributes(ctable)$byVar) <- Hmisc::label(data[, byVar])
   attributes(ctable)$vars <- vars  
   return(ctable)
 }
