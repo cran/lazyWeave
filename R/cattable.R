@@ -40,16 +40,17 @@ cattable <- function(data, vars, byVar, fisher=NULL, fisher.arg=NULL,
 
   var.info <- function(v){
     if (!is.factor(data[, v])){
-      v.lab <- Hmisc::label(data[, v])
+      v.lab <- labelVector::get_label(data[[v]])
       data[, v] <- factor(data[,v])
-      Hmisc::label(data[, v]) <- v.lab
+      data[[v]] <- labelVector::set_label(data[[v]],
+                                          v.lab)
     }
     
     nlev <- nlevels(data[, byVar])
     nlev.v <- nlevels(data[, v])
     
     .name <- c(v, rep(NA, nlev.v))
-    .label <- c(if (Hmisc::label(data[,v]) %in% "") v else Hmisc::label(data[, v]), rep(NA, nlev.v))
+    .label <- c(if (labelVector::get_label(data[[v]]) %in% "") v else labelVector::get_label(data[[v]]), rep(NA, nlev.v))
     .level <- c(NA, levels(data[, v]))
     .total <- c(sum(table(data[, v])), table(data[, v]))
     .count <- rbind(NA, table(data[, v], data[, byVar]))
@@ -66,9 +67,6 @@ cattable <- function(data, vars, byVar, fisher=NULL, fisher.arg=NULL,
     .median <- matrix(NA, nrow=nlev.v + 1, ncol=nlevels(data[, byVar]))
     .p75 <- matrix(NA, nrow=nlev.v + 1, ncol=nlevels(data[, byVar]))
     .max <- matrix(NA, nrow=nlev.v + 1, ncol=nlevels(data[, byVar]))
-
-
-
 
     
     .odds.scale <- .odds.unit <- rep(NA, nlev.v + 1)
@@ -166,7 +164,7 @@ cattable <- function(data, vars, byVar, fisher=NULL, fisher.arg=NULL,
         }
       }
       else{
-        warn <- withWarnings(stats::chisq.test(data[, v], data[, byVar]))
+        warn <- withWarnings(stats::chisq.test(unclass(data[, v]), data[, byVar]))
         if (!is.null(warn$warnings)) warning(v, ": ", warn$warnings)
         test.obj <- warn$value
         .test.method <- c(test.obj$method, rep(NA, nlev.v))
@@ -175,7 +173,6 @@ cattable <- function(data, vars, byVar, fisher=NULL, fisher.arg=NULL,
         .pvalue <- c(test.obj$p.value, rep(NA, nlev.v))
       }
     }
-    
     
     if (v %in% odds) .type <- "Logistic"
     else if (v %in% cmh) .type <- "Mantel-Haenszel"
@@ -197,12 +194,13 @@ cattable <- function(data, vars, byVar, fisher=NULL, fisher.arg=NULL,
                  .test.method, .test.mark, .test.stat, .pvalue,
                  is_significant(.pvalue), .type,
                  stringsAsFactors=FALSE)
+
     names(.df) <- c("name", "label", "level", "total", names.df, "missing", "missing.perc",
                     "odds", "odds.lower", "odds.upper",
                     "odds.scale", "odds.unit",
                     "test", "test.mark", "test.stat",
                     "pvalue", "significant", "type")
-                    
+    
     rownames(.df) <- 
        c(v, paste(v, abbreviate(levels(data[, v]), minlength=minl), sep="-"))
 
@@ -214,7 +212,6 @@ cattable <- function(data, vars, byVar, fisher=NULL, fisher.arg=NULL,
     data[, byVar] <- factor("")
   }
 #   if (!("ccf.df" %in% class(data))) data <- as.ccf.df.data.frame(data)
-
   if (!is.factor(data[, byVar])) data[, byVar] <- factor(data[, byVar])
   
   #toFactor <- vars[sapply(vars, function(x) !is.factor(data[, x]))]
@@ -222,8 +219,9 @@ cattable <- function(data, vars, byVar, fisher=NULL, fisher.arg=NULL,
   
   ctable <- do.call("rbind", lapply(vars, var.info))
   ctable$type <- factor(ctable$type)
+  data[[byVar]] <- labelVector::set_label(data[[byVar]],
+                                          labelVector::get_label(data, byVar))
   attributes(ctable)$byVar <- data[, byVar]
-  Hmisc::label(attributes(ctable)$byVar) <- Hmisc::label(data[, byVar])
   attributes(ctable)$vars <- vars  
   class(ctable) <- c("ctable", "data.frame")
   return(ctable)

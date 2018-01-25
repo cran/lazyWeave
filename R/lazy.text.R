@@ -2,7 +2,7 @@
 #' @export lazy.text
 #' 
 #' @title Paragraphs in LaTeX
-#' @details Write paragraphs in LaTeX code
+#' @description Write paragraphs in LaTeX code
 #' 
 #' @param ... Text and other objects to be included in the paragraph
 #' @param title A title for the paragraph
@@ -118,7 +118,7 @@ function(..., title=NULL, align="left",
            
     #*** Closing call to style            
     text <- paste(..., sep=sep)
-    if (translate) text <- latexTranslate(text)
+    if (translate) text <- Hmisc::latexTranslate(text)
     text <- paste(text, "\n", sep="")
   
     #*** Paste all code together
