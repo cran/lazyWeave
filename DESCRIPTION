@@ -1,7 +1,7 @@
 Package: lazyWeave
 Type: Package
 Title: LaTeX Wrappers for R Users
-Version: 3.0.2
+Version: 3.0.3
 Authors@R: c(
     person("Benjamin", "Nutter", email = "benjamin.nutter@gmail.com", 
            role = c("aut", "cre")))
@@ -17,9 +17,9 @@ LazyLoad: yes
 Depends: R (>= 2.10.0)
 Imports: Hmisc, labelVector
 Suggests: testthat
-RoxygenNote: 6.0.1
+RoxygenNote: 7.3.2
 NeedsCompilation: no
-Packaged: 2018-01-25 00:04:28 UTC; benjamin
+Packaged: 2025-04-03 12:05:28 UTC; benja
 Author: Benjamin Nutter [aut, cre]
 Repository: CRAN
-Date/Publication: 2018-01-25 12:30:43 UTC
+Date/Publication: 2025-04-03 12:20:02 UTC

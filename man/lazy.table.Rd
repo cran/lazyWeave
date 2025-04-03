@@ -4,14 +4,36 @@
 \alias{lazy.table}
 \title{Tables in LaTeX}
 \usage{
-lazy.table(x, align = "center", cspan = 1, cwidth = NULL,
-  cwidth.units = "in", cborder = NULL, cborder.thick = 1,
-  cborder.style = "solid black", rborder = NULL, rbspan = NULL,
-  rborder.thick = 1, rborder.style = "solid black", rcol = NULL,
-  usecol = "lightgray", font, family, size, justify = "center",
-  placement = "h", open = TRUE, close = TRUE, caption = NULL,
-  footnote = NULL, label = NULL, counter = NULL, counterSet = NULL,
-  translate = TRUE, cat = getOption("lazyWeave_cat"))
+lazy.table(
+  x,
+  align = "center",
+  cspan = 1,
+  cwidth = NULL,
+  cwidth.units = "in",
+  cborder = NULL,
+  cborder.thick = 1,
+  cborder.style = "solid black",
+  rborder = NULL,
+  rbspan = NULL,
+  rborder.thick = 1,
+  rborder.style = "solid black",
+  rcol = NULL,
+  usecol = "lightgray",
+  font,
+  family,
+  size,
+  justify = "center",
+  placement = "h",
+  open = TRUE,
+  close = TRUE,
+  caption = NULL,
+  footnote = NULL,
+  label = NULL,
+  counter = NULL,
+  counterSet = NULL,
+  translate = TRUE,
+  cat = getOption("lazyWeave_cat")
+)
 }
 \arguments{
 \item{x}{Matrix to be put into the table.  Other objects are coerced to
@@ -87,7 +109,7 @@ above tables.}
 In other words, the number of this table}
 
 \item{translate}{Toggles if inputs in \code{x} should be passed through 
-\code{latexTranslate}.  This should be set to \code{FALSE} if writing
+\code{\link[Hmisc]{latexTranslate}}.  This should be set to \code{FALSE} if writing
 custom code}
 
 \item{cat}{Logical. Determines if the output is returned as a character string

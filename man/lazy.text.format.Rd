@@ -4,8 +4,13 @@
 \alias{lazy.text.format}
 \title{Format Text}
 \usage{
-lazy.text.format(text, italic = FALSE, bold = FALSE, underline = FALSE,
-  translate = TRUE)
+lazy.text.format(
+  text,
+  italic = FALSE,
+  bold = FALSE,
+  underline = FALSE,
+  translate = TRUE
+)
 }
 \arguments{
 \item{text}{Text to be formatted}
@@ -17,7 +22,7 @@ lazy.text.format(text, italic = FALSE, bold = FALSE, underline = FALSE,
 \item{underline}{Logical. Specifies if text should be underlined}
 
 \item{translate}{Logical. Specifies if text should be passed through 
-\code{latexTranslate} before printing}
+\code{\link[Hmisc]{latexTranslate}} before printing}
 }
 \description{
 Applies italic, bold, or underlining to a piece of text.  
@@ -37,8 +42,8 @@ lazy.text.format("This is the text", italic=TRUE)
 lazy.text.format("This is the text", bold=TRUE)
 lazy.text.format("This is the text", italic=TRUE, bold=TRUE)
 
-lazy.text("The percentage of defective lightbulbs in this sample was ", 
-          lazy.text.format("30\\\%", italic=TRUE),
+lazy.text("The percentage of defective light bulbs in this sample was ", 
+          lazy.text.format("30\%", italic=TRUE),
           ". Clearly, this is unacceptable.")
 
 }

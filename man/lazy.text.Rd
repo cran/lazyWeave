@@ -4,9 +4,19 @@
 \alias{lazy.text}
 \title{Paragraphs in LaTeX}
 \usage{
-lazy.text(..., title = NULL, align = "left", italic = FALSE,
-  bold = FALSE, underline = FALSE, sep = "", translate = TRUE, font,
-  family, size)
+lazy.text(
+  ...,
+  title = NULL,
+  align = "left",
+  italic = FALSE,
+  bold = FALSE,
+  underline = FALSE,
+  sep = "",
+  translate = TRUE,
+  font,
+  family,
+  size
+)
 }
 \arguments{
 \item{...}{Text and other objects to be included in the paragraph}
@@ -26,7 +36,7 @@ lazy.text(..., title = NULL, align = "left", italic = FALSE,
 \code{...} when they are pasted together}
 
 \item{translate}{Toggles if inputs in \code{x} should be passed through 
-\code{latexTranslate}.  This should be set to \code{FALSE} if writing
+\code{\link[Hmisc]{latexTranslate}}.  This should be set to \code{FALSE} if writing
 custom code.}
 
 \item{font}{HTML font for the paragraph. Defaults to the HTML option 

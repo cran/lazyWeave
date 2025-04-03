@@ -4,10 +4,19 @@
 \alias{lazy.matrix}
 \title{Convert Matrix to LaTeX Table}
 \usage{
-lazy.matrix(x, align = "center", justify = "center", rcol = NULL,
-  usecol = "lightgray", caption = NULL, footnote = NULL,
-  placement = "h", translate = TRUE, cat = getOption("lazyWeave_cat"),
-  ...)
+lazy.matrix(
+  x,
+  align = "center",
+  justify = "center",
+  rcol = NULL,
+  usecol = "lightgray",
+  caption = NULL,
+  footnote = NULL,
+  placement = "h",
+  translate = TRUE,
+  cat = getOption("lazyWeave_cat"),
+  ...
+)
 }
 \arguments{
 \item{x}{A matrix.  Other objects are coerced to matrices}
@@ -33,7 +42,7 @@ below the table.}
 \code{"!"}. See "Details" for more explanation. These apply only to LaTeX}
 
 \item{translate}{Toggles if inputs in \code{x} should be passed through 
-\code{latexTranslate}.  This should be set to \code{FALSE} if writing
+\code{\link[Hmisc]{latexTranslate}}.  This should be set to \code{FALSE} if writing
 custom code}
 
 \item{cat}{Logical. Determines if the output is returned as a character string
